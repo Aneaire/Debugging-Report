@@ -13,7 +13,7 @@ Issues likely arise from how purchase data is sent and how payloads are handled.
 - **Data Transmission**: API integrations for external orders may not trigger standard purchase events.
 - **Payload Handling**: Inconsistent data structures, timestamp errors, or processing delays could cause missing or misattributed events.
 
-Review GTM/GA4 configs, including triggers, tags, API integrations, and payload testing.
+Note: Current access is read-only, limiting our ability to inspect API implementations and identify exact issues. Review GTM/GA4 configs, including triggers, tags, API integrations, and payload testing.
 
 ## Recommendations
 1. **Audit Current Implementation**: Perform a detailed code review of GTM tags, triggers, and GA4 event configurations to identify discrepancies in data handling.
