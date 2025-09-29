@@ -1,30 +1,19 @@
 # Purchase Tracking Analysis
 
 ## Current Status
-Duplicate purchase events previously caused by overlapping triggers from the Fueld app on BigCommerce and GTM tags have been resolved. Purchase events are now correctly flowing to GA4.
+Duplicate purchase events from Fueld app and GTM tags have been resolved. Purchase events now flow correctly to GA4.
 
 ## Identified Issues
-Despite the cleanup, several issues persist:
-- **Missing Orders from External Platforms**: Amazon and eBay orders, which are added via API, are not being captured in GA4.
-- **Missing Orders Due to Reporting Lag**: Some orders fail to appear in reports due to delays in data processing.
-- **Incorrect Date Attribution**: Certain orders are recorded on the wrong day, distorting daily performance metrics.
+- Amazon and eBay orders (added via API) are missing.
+- Some orders missing due to reporting lag.
+- Some orders appear on the wrong day, skewing daily reporting.
 
 ## Root Cause Analysis
-The problems likely stem from how purchase data is sent and how the payload is handled in the current implementation. Key areas to investigate:
+Issues likely arise from how purchase data is sent and how payloads are handled. Suspect problems in:
+- **Data Transmission**: API integrations for external orders may not trigger standard purchase events.
+- **Payload Handling**: Inconsistent data structures, timestamp errors, or processing delays could cause missing or misattributed events.
 
-### Data Transmission Method
-- **API Integration Gaps**: Orders from Amazon and eBay are processed through APIs that may not trigger the standard purchase event pathways used for direct BigCommerce transactions.
-- **Event Firing Logic**: The conditions for firing purchase events might not account for all order sources, leading to incomplete data capture.
-
-### Payload Handling
-- **Data Structure Inconsistencies**: The payload sent to GA4 may lack uniformity, especially for API-driven orders, resulting in missing or malformed events.
-- **Timestamp and Attribution Errors**: Incorrect handling of order timestamps or attribution parameters could cause orders to be logged on erroneous dates.
-- **Lag in Processing**: Delays in payload processing or buffering might cause some events to be dropped or delayed beyond reporting thresholds.
-
-To confirm these hypotheses, a thorough review of the current GTM and GA4 configurations is recommended, including:
-- Examining the purchase event triggers and tags.
-- Auditing API integrations for completeness.
-- Testing payload structures across different order types.
+Review GTM/GA4 configs, including triggers, tags, API integrations, and payload testing.
 
 ## Recommendations
 1. **Audit Current Implementation**: Perform a detailed code review of GTM tags, triggers, and GA4 event configurations to identify discrepancies in data handling.
