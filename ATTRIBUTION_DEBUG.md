@@ -43,6 +43,8 @@ I suggest that in the meantime we go to usual way while SGTM is on progress
 - **GTM**: Google Tag Manager for tag management and deployment.
 - **stape.io**: Platform for hosting and managing server-side GTM containers.
 
+For a detailed implementation plan for Server-Side Google Tag Manager, see the [SGTM Action Plan](SGTM_ACTION_PLAN.md).
+
 ![Image 6](images/image_6.png)
 
 ![Image 7](images/image_7.png)
